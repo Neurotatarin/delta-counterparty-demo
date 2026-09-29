@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дельта — демо проверки контрагентов</title>
+<style>html{color-scheme:light dark}body{margin:0;background:light-dark(#edf3f8,#121926)}</style>
+</head>
+<body>
+<div id="deltaMobilePreview" class="viz-dotted-background">
+  <style>
+    #deltaMobilePreview {
+      color-scheme: light dark;
+      --bg: light-dark(#f5f7fb,#121926);
+      --surface: light-dark(#ffffff,#1d2735);
+      --surface2: light-dark(#eef4fa,#273549);
+      --ink: light-dark(#172538,#edf4fb);
+      --muted: light-dark(#718198,#9bacbf);
+      --line: light-dark(#e4eaf1,#344256);
+      --blue: light-dark(#3978e8,#75a8ff);
+      --blue-soft: light-dark(#eaf2ff,#243854);
+      --red: light-dark(#df5b63,#ff9198);
+      --red-soft: light-dark(#fff0f1,#50303a);
+      --gold: light-dark(#b77d19,#f3c479);
+      --gold-soft: light-dark(#fff6e5,#483b27);
+      --green: light-dark(#268861,#74d4aa);
+      --green-soft: light-dark(#e8f8ef,#254337);
+      --shadow: light-dark(#233d6422,#00000033);
+      padding: 18px 8px;
+      font: 14px/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color: var(--ink);
+    }
+    #deltaMobilePreview * { box-sizing:border-box; }
+    #deltaMobilePreview [hidden] { display:none !important; }
+    #deltaMobilePreview [hidden] { display:none !important; }
+    #deltaMobilePreview button { font:inherit; cursor:pointer; }
+    #deltaMobilePreview .phone {
+      width:min(100%,430px); margin:auto; background:var(--bg); border:1px solid var(--line);
+      border-radius:30px; overflow:hidden; box-shadow:0 18px 50px var(--shadow);
+    }
+    #deltaMobilePreview .telegram-bar {
+      height:50px; background:var(--surface); display:flex; align-items:center;
+      justify-content:space-between; padding:0 17px; border-bottom:1px solid var(--line);
+      color:var(--muted); font-size:13px;
+    }
+    #deltaMobilePreview .telegram-bar strong { color:var(--ink); font-weight:650; }
+    #deltaMobilePreview .app-head { display:flex; align-items:center; gap:10px; padding:19px 20px 7px; }
+    #deltaMobilePreview .logo {
+      display:grid; place-items:center; width:39px; height:39px; border-radius:13px; color:#fff;
+      background:linear-gradient(135deg,#348df2,#7259e9); font-size:18px; font-weight:700;
+      box-shadow:0 7px 15px light-dark(#3978e842,#3978e82b);
+    }
+    #deltaMobilePreview .app-name { font-size:17px; font-weight:700; letter-spacing:-.25px; }
+    #deltaMobilePreview .app-desc { color:var(--muted); font-size:11px; }
+    #deltaMobilePreview .screen { padding:10px 16px 18px; min-height:570px; }
+    #deltaMobilePreview .eyebrow { color:var(--muted); font-size:11px; font-weight:650; letter-spacing:.7px; text-transform:uppercase; margin:13px 3px 9px; }
+    #deltaMobilePreview .hero {
+      padding:21px; border-radius:23px; color:#fff;
+      background:radial-gradient(circle at 95% 5%,#97b7ff75 0 18%,transparent 19%),linear-gradient(125deg,#2369d8,#4b5cdb 55%,#7351c5);
+      box-shadow:0 12px 24px light-dark(#406bd43b,#00000033);
+    }
+    #deltaMobilePreview .hero small { display:block; opacity:.81; font-size:11px; }
+    #deltaMobilePreview .hero h1 { margin:9px 0 3px; font-size:22px; font-weight:700; letter-spacing:-.5px; line-height:1.18; }
+    #deltaMobilePreview .hero p { margin:0; opacity:.88; font-size:12px; }
+    #deltaMobilePreview .hero-metrics { display:flex; gap:8px; margin-top:18px; }
+    #deltaMobilePreview .hero-metric { flex:1; padding:10px 11px; border-radius:12px; background:#ffffff26; }
+    #deltaMobilePreview .hero-metric b { display:block; font-size:20px; line-height:1; }
+    #deltaMobilePreview .hero-metric span { display:block; margin-top:5px; font-size:10px; opacity:.9; }
+    #deltaMobilePreview .section-row { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:20px 3px 10px; }
+    #deltaMobilePreview .section-row h2 { margin:0; font-size:16px; font-weight:700; }
+    #deltaMobilePreview .text-button { border:0; background:none; color:var(--blue); font-weight:650; padding:5px; }
+    #deltaMobilePreview .feature {
+      padding:15px; background:var(--surface); border:1px solid var(--line); border-radius:19px;
+      box-shadow:0 6px 20px var(--shadow);
+    }
+    #deltaMobilePreview .feature-top { display:flex; justify-content:space-between; align-items:start; gap:8px; }
+    #deltaMobilePreview .badge { display:inline-flex; align-items:center; gap:5px; padding:5px 8px; border-radius:99px; font-size:10px; font-weight:700; white-space:nowrap; }
+    #deltaMobilePreview .badge.red { background:var(--red-soft); color:var(--red); }
+    #deltaMobilePreview .badge.gold { background:var(--gold-soft); color:var(--gold); }
+    #deltaMobilePreview .badge.green { background:var(--green-soft); color:var(--green); }
+    #deltaMobilePreview .badge.blue { background:var(--blue-soft); color:var(--blue); }
+    #deltaMobilePreview .badge::before { content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+    #deltaMobilePreview .feature h3 { margin:7px 0 2px; font-size:17px; font-weight:700; }
+    #deltaMobilePreview .muted { color:var(--muted); }
+    #deltaMobilePreview .small { font-size:11px; }
+    #deltaMobilePreview .feature-change { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:15px 0 14px; }
+    #deltaMobilePreview .feature-change div { padding:10px; border-radius:12px; background:var(--surface2); }
+    #deltaMobilePreview .feature-change span { display:block; font-size:10px; color:var(--muted); }
+    #deltaMobilePreview .feature-change b { display:block; margin-top:2px; font-size:13px; font-weight:650; }
+    #deltaMobilePreview .primary {
+      display:block; width:100%; border:0; border-radius:12px; padding:12px 14px;
+      background:var(--blue); color:#fff; font-weight:700; text-align:center;
+    }
+    #deltaMobilePreview .primary:active, #deltaMobilePreview .company-card:active { transform:scale(.99); }
+    #deltaMobilePreview .mini-list { display:grid; gap:9px; }
+    #deltaMobilePreview .company-card {
+      display:flex; width:100%; align-items:center; gap:11px; text-align:left;
+      padding:12px; background:var(--surface); border:1px solid var(--line); border-radius:16px;
+      color:var(--ink);
+    }
+    #deltaMobilePreview .avatar { flex:0 0 38px; width:38px; height:38px; display:grid; place-items:center; border-radius:13px; background:var(--blue-soft); color:var(--blue); font-weight:800; }
+    #deltaMobilePreview .company-text { min-width:0; flex:1; }
+    #deltaMobilePreview .company-text b { display:block; font-weight:650; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #deltaMobilePreview .company-text small { display:block; color:var(--muted); font-size:11px; margin-top:2px; }
+    #deltaMobilePreview .chev { color:var(--muted); font-size:23px; line-height:1; }
+    #deltaMobilePreview .screen-title { display:flex; gap:9px; align-items:center; margin:2px 0 18px; }
+    #deltaMobilePreview .back { border:0; color:var(--blue); background:var(--blue-soft); border-radius:11px; width:34px; height:34px; font-size:22px; line-height:1; }
+    #deltaMobilePreview .screen-title h1 { margin:0; font-size:20px; letter-spacing:-.3px; }
+    #deltaMobilePreview .detail-hero { padding:17px; border-radius:19px; background:var(--surface); border:1px solid var(--line); }
+    #deltaMobilePreview .detail-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    #deltaMobilePreview .detail-head h2 { font-size:18px; line-height:1.2; margin:0 0 3px; }
+    #deltaMobilePreview .score-bubble { flex:0 0 74px; width:74px; height:74px; border-radius:50%; display:grid; place-items:center; background:conic-gradient(var(--red) var(--arc),var(--surface2) 0); }
+    #deltaMobilePreview .score-bubble div { display:grid; place-items:center; width:58px; height:58px; border-radius:50%; background:var(--surface); line-height:1.04; }
+    #deltaMobilePreview .score-bubble b { font-size:19px; }
+    #deltaMobilePreview .score-bubble small { font-size:9px; color:var(--muted); }
+    #deltaMobilePreview .source-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+    #deltaMobilePreview .source-tags span { padding:5px 7px; border-radius:8px; font-size:10px; color:var(--muted); background:var(--surface2); }
+    #deltaMobilePreview .info-card { background:var(--surface); border:1px solid var(--line); border-radius:17px; padding:15px; margin-top:11px; }
+    #deltaMobilePreview .info-card h3 { margin:0 0 8px; font-size:14px; font-weight:700; }
+    #deltaMobilePreview .info-card p { margin:0; font-size:12px; color:var(--muted); }
+    #deltaMobilePreview .compare { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:11px 0; border-bottom:1px solid var(--line); }
+    #deltaMobilePreview .compare:last-child { border-bottom:0; padding-bottom:0; }
+    #deltaMobilePreview .compare span { font-size:11px; color:var(--muted); }
+    #deltaMobilePreview .compare b { font-size:12px; font-weight:650; text-align:right; }
+    #deltaMobilePreview .ai-label { display:inline-flex; align-items:center; gap:5px; color:var(--blue); font-size:10px; font-weight:750; letter-spacing:.4px; margin-bottom:6px; }
+    #deltaMobilePreview .ai-label::before { content:"✦"; font-size:14px; }
+    #deltaMobilePreview .option-row { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-top:11px; }
+    #deltaMobilePreview .option-row button { padding:10px; border:1px solid var(--line); border-radius:11px; background:var(--surface2); color:var(--ink); font-size:11px; font-weight:650; }
+    #deltaMobilePreview .decision { margin-top:10px; font-size:11px; color:var(--green); min-height:16px; }
+    #deltaMobilePreview .history-line { position:relative; padding:0 0 15px 20px; border-left:2px solid var(--line); margin-left:6px; }
+    #deltaMobilePreview .history-line::before { content:""; position:absolute; left:-6px; top:3px; width:10px; height:10px; border-radius:50%; background:var(--blue); }
+    #deltaMobilePreview .history-line b { display:block; font-size:12px; }
+    #deltaMobilePreview .history-line span { color:var(--muted); font-size:11px; }
+    #deltaMobilePreview .stage-card { display:flex; gap:10px; align-items:flex-start; width:100%; padding:11px 12px; text-align:left; border:1px solid var(--line); border-radius:12px; background:var(--surface); color:var(--ink); margin-bottom:7px; }
+    #deltaMobilePreview .stage-number { display:grid; place-items:center; flex:0 0 26px; width:26px; height:26px; border-radius:9px; background:var(--blue-soft); color:var(--blue); font-size:11px; font-weight:700; }
+    #deltaMobilePreview .stage-card b { display:block; font-size:12px; }
+    #deltaMobilePreview .stage-card small { display:block; margin-top:4px; color:var(--muted); font-size:11px; }
+    #deltaMobilePreview .stage-card.skip { opacity:.62; }
+    #deltaMobilePreview .bottom-nav { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); background:var(--surface); padding:7px 5px 10px; }
+    #deltaMobilePreview .bottom-nav button { border:0; background:none; color:var(--muted); padding:4px 5px; font-size:10px; font-weight:650; }
+    #deltaMobilePreview .bottom-nav button[aria-current="page"] { color:var(--blue); }
+    #deltaMobilePreview .nav-glyph { display:block; font-size:19px; line-height:1.2; margin-bottom:2px; }
+    #deltaMobilePreview .demo-note { margin:15px 3px 0; color:var(--muted); font-size:10px; }
+    @media (max-width:420px) { #deltaMobilePreview { padding:0; } #deltaMobilePreview .phone { border-radius:0; border:0; box-shadow:none; } }
+  </style>
+
+  <div class="phone">
+    <div class="telegram-bar"><span>‹ <strong>Telegram</strong></span><span>Мини-приложение · ⋯</span></div>
+    <div class="app-head"><div class="logo">Δ</div><div><div class="app-name">Дельта</div><div class="app-desc">Контрагенты под контролем</div></div></div>
+    <div id="deltaScreen" class="screen" aria-live="polite"></div>
+    <div class="bottom-nav" aria-label="Навигация">
+      <button type="button" data-nav="home" aria-current="page"><span class="nav-glyph">◉</span>Сводка</button>
+      <button type="button" data-nav="list"><span class="nav-glyph">▦</span>Компании</button>
+      <button type="button" data-nav="stages"><span class="nav-glyph">◷</span>Этапы</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const root=document.getElementById('deltaMobilePreview');
+  const screen=root.querySelector('#deltaScreen');
+  const records={
+    sever:{name:'ООО «СеверСтрой»',mark:'С',inn:'демо-001',status:'Требует внимания',tone:'red',score:'78',arc:'78%',source:'1С и СБИС ответили · ИНН совпал',delta:'Долг: 1,2 → 2,1 млн ₽',event:'Новое судебное событие',explain:'Сработал примерный триггер: долг вырос, а СБИС сообщил о новом судебном событии. Скрипт рассчитал баллы по этим изменениям.',recommend:'Уточнить причину долга, запросить подтверждающие документы и проверить статус судебного события.',history:[['28 сентября · 14:30','78 баллов · новые изменения'],['22 сентября · 14:30','31 балл · долг 1,2 млн ₽'],['15 сентября · 14:30','28 баллов · предыдущий снимок']],decision:''},
+    volga:{name:'ООО «ВолгаКомплект»',mark:'В',inn:'демо-002',status:'Стабильно',tone:'green',score:'12',arc:'12%',source:'1С и СБИС ответили · ИНН совпал',delta:'Без заметных изменений',event:'Новых внешних событий нет',explain:'Изменений, требующих внимания, не найдено. Сообщение сотруднику не отправлялось, ИИ не вызывался.',recommend:'Продолжить плановый мониторинг.',history:[['28 сентября · 14:30','12 баллов · без изменений'],['22 сентября · 14:30','12 баллов · без изменений']],decision:''},
+    mayak:{name:'ООО «Маяк-Трейд»',mark:'М',inn:'демо-003',status:'Есть изменения',tone:'gold',score:'43',arc:'43%',source:'1С и СБИС ответили · ИНН совпал',delta:'Долг без изменений',event:'Обновились сведения о компании',explain:'Внешние сведения изменились, но порог уведомления в этом примере не достигнут.',recommend:'Сверить обновлённые сведения в следующем цикле.',history:[['28 сентября · 14:30','43 балла · внешнее изменение'],['22 сентября · 14:30','19 баллов · без изменений']],decision:''},
+    kvarts:{name:'ООО «КварцПром»',mark:'К',inn:'демо-004',status:'Неполная проверка',tone:'blue',score:'—',arc:'0%',source:'1С ответила · СБИС: нет ответа',delta:'Сравнение неполное',event:'Ошибка источника — не риск',explain:'СБИС не ответил. Его данные не использованы для скоринга, технический пропуск отмечен отдельно.',recommend:'Повторить запрос к СБИС.',history:[['28 сентября · 14:30','Неполная проверка · СБИС не ответил'],['22 сентября · 14:30','24 балла · оба источника ответили']],decision:''},
+    rezerv:{name:'ООО «Резерв-Логистика»',mark:'Р',inn:'демо-005',status:'Первый цикл',tone:'blue',score:'—',arc:'0%',source:'1С и СБИС ответили · ИНН совпал',delta:'Первая запись сохранена',event:'Предыдущей записи пока нет',explain:'Первая проверка стала исходной точкой. Сравнение с прошлым циклом начнётся при следующем запуске.',recommend:'Продолжить плановый мониторинг.',history:[['28 сентября · 14:30','Первый снимок · исходная точка']],decision:''}
+  };
+  const stages=[
+    ['Запуск по расписанию','Сервис начал очередной цикл проверки.'],
+    ['Получить данные из 1С','Список и внутренние показатели компаний получены из 1С за один логический этап.'],
+    ['Запросить СБИС по ИНН','Для каждого ИНН запрошены внешние сведения.'],
+    ['Сверить ответы','ИНН и статусы источников проверены; чужие данные не связываются.'],
+    ['Сохранить запись','Добавлена новая запись с датой. Прошлые записи остаются в истории.'],
+    ['Сравнить с предыдущей','Скрипт нашёл изменения относительно последней записи.'],
+    ['Рассчитать скоринг','Скрипт применил заданные правила и порог уведомления.'],
+    ['Объяснение ИИ','ИИ получил изменения и сработавшие правила и объяснил триггер.'],
+    ['Рекомендации ИИ','ИИ предложил варианты снижения или контроля риска.'],
+    ['Решение сотрудника','Человек выбирает действие, решение записывается в карточку.']
+  ];
+  let page='home', selected='sever';
+  const e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function card(id){const r=records[id];return `<button type="button" class="company-card" data-open="${id}"><span class="avatar">${r.mark}</span><span class="company-text"><b>${e(r.name)}</b><small>${e(r.inn)} · ${e(r.status)}</small></span><span class="chev">›</span></button>`;}
+  function draw(){
+    root.querySelectorAll('[data-nav]').forEach(b=>b.setAttribute('aria-current',b.dataset.nav===page?'page':'false'));
+    if(page==='home') screen.innerHTML=`
+      <div class="hero"><small>ПОСЛЕДНИЙ ЦИКЛ · 28 СЕНТЯБРЯ, 14:30</small><h1>Проверка завершена</h1><p>Изменения собраны и сопоставлены с прошлым циклом</p><div class="hero-metrics"><div class="hero-metric"><b>5</b><span>компаний</span></div><div class="hero-metric"><b>1</b><span>требует решения</span></div><div class="hero-metric"><b>1</b><span>неполная проверка</span></div></div></div>
+      <div class="section-row"><h2>Требует внимания</h2><span class="badge red">Новое событие</span></div>
+      <div class="feature"><div class="feature-top"><div><span class="small muted">ИНН демо-001</span><h3>ООО «СеверСтрой»</h3></div><span class="badge red">78 баллов</span></div><div class="feature-change"><div><span>Из 1С</span><b>Долг вырос</b></div><div><span>Из СБИС</span><b>Судебное событие</b></div></div><button class="primary" type="button" data-open="sever">Открыть проверку →</button></div>
+      <div class="section-row"><h2>Остальные компании</h2><button class="text-button" type="button" data-go="list">Все 5 →</button></div>
+      <div class="mini-list">${card('volga')}${card('mayak')}${card('kvarts')}</div><div class="demo-note">Демо: компании, оценки и события вымышлены. Правила скоринга ещё не согласованы.</div>`;
+    if(page==='list') screen.innerHTML=`<div class="screen-title"><h1>Контрагенты</h1></div><p class="small muted">Последний цикл · 28 сентября, 14:30</p><div class="mini-list">${Object.keys(records).map(card).join('')}</div><div class="demo-note">Технический сбой источника показан отдельно от риска компании.</div>`;
+    if(page==='detail') {const r=records[selected];const alerted=selected==='sever';screen.innerHTML=`
+      <div class="screen-title"><button type="button" class="back" data-go="list" aria-label="Назад к списку">‹</button><h1>Карточка компании</h1></div>
+      <div class="detail-hero"><div class="detail-head"><div><h2>${e(r.name)}</h2><span class="small muted">ИНН ${e(r.inn)}</span><div style="margin-top:9px"><span class="badge ${r.tone}">${e(r.status)}</span></div></div><div class="score-bubble" style="--arc:${r.arc}"><div><b>${e(r.score)}</b><small>баллы</small></div></div></div><div class="source-tags"><span>${e(r.source)}</span><span>Запись: 28 сен · 14:30</span></div></div>
+      <div class="info-card"><h3>Что изменилось</h3><div class="compare"><span>Внутренние данные 1С</span><b>${e(r.delta)}</b></div><div class="compare"><span>Внешние данные СБИС</span><b>${e(r.event)}</b></div></div>
+      ${alerted?`<div class="info-card"><span class="ai-label">ОБЪЯСНЕНИЕ ИИ</span><p>${e(r.explain)}</p></div>
+      <div class="info-card"><span class="ai-label">РЕКОМЕНДАЦИЯ ИИ</span><p>${e(r.recommend)}</p><div class="option-row"><button type="button" data-decision="Уточнить у ответственного">Уточнить</button><button type="button" data-decision="Передать на проверку">Передать на проверку</button></div><div class="decision">${r.decision?`Демо-решение сохранено: ${e(r.decision)}`:'Решение сотрудника ещё не записано'}</div></div>`:`<div class="info-card"><h3>Итог цикла</h3><p>${e(r.explain)}</p></div>`}
+      <div class="section-row"><h2>История проверок</h2><button class="text-button" type="button" data-go="stages">Этапы →</button></div><div class="info-card">${r.history.map(h=>`<div class="history-line"><b>${e(h[0])}</b><span>${e(h[1])}</span></div>`).join('')}</div><div class="demo-note">Пример экрана. Кнопки меняют только демонстрационные данные.</div>`;}
+    if(page==='stages') {const stop=selected==='sever'?10:(selected==='kvarts'||selected==='rezerv'?6:7);screen.innerHTML=`<div class="screen-title"><h1>Путь проверки</h1></div><p class="small muted">Пример последнего цикла: ${e(records[selected].name)}</p><div class="stage-list">${stages.map((s,i)=>`<button class="stage-card ${i>=stop?'skip':''}" type="button" data-stage="${i}" aria-expanded="false"><span class="stage-number">${i+1}</span><span><b>${e(s[0])}</b><small hidden>${i>=stop?'В этом цикле не выполнялся.':e(s[1])}</small></span></button>`).join('')}</div><div class="demo-note">Получение данных, сверка и скоринг выполняются сервисом. ИИ подключается после триггера; решение принимает сотрудник.</div>`;}
+  }
+  root.addEventListener('click',ev=>{
+    const open=ev.target.closest('[data-open]'); if(open){selected=open.dataset.open;page='detail';draw();return;}
+    const nav=ev.target.closest('[data-nav]'); if(nav){page=nav.dataset.nav;draw();return;}
+    const go=ev.target.closest('[data-go]'); if(go){page=go.dataset.go;draw();return;}
+    const decision=ev.target.closest('[data-decision]'); if(decision){records[selected].decision=decision.dataset.decision;draw();return;}
+    const stage=ev.target.closest('[data-stage]'); if(stage){const hint=stage.querySelector('small');const expanded=stage.getAttribute('aria-expanded')==='true';stage.setAttribute('aria-expanded',String(!expanded));hint.hidden=expanded;}
+  });
+  draw();
+})();
+</script>
+
+</body>
+</html>
