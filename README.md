@@ -8,7 +8,7 @@
 
 Макет показывает, как карточки контрагентов и изменения статусов могут выглядеть в одном интерфейсе. Интеграции и правила оценки рисков для конкретной компании требуют отдельного проектирования.
 
-[Описать свою задачу по автоматизации или интеграции](https://lenar-prompt-engineer.neurotatarin.chatgpt.site/?utm_source=github&utm_campaign=portfolio&utm_content=delta_demo#brief)
+[Описать свою задачу по автоматизации или интеграции](https://neurotatarin.github.io/delta-counterparty-demo/portfolio/?utm_source=github&utm_campaign=portfolio&utm_content=delta_demo#brief)
 
 ## Обновление демо
 
