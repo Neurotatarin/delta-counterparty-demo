@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Досье сделки · демо Ленара Газизуллина</title>
+<style>
+:root{color-scheme:dark;--bg:#101513;--panel:#19221d;--line:#34443a;--text:#f2f7ee;--muted:#b1c2b5;--lime:#d5fa8b;--red:#ffc1b0;--amber:#f6db9d;--blue:#c2dfff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,sans-serif}main,header{width:min(1080px,calc(100% - 36px));margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0;border-bottom:1px solid var(--line)}header a{color:var(--muted);text-decoration:none}main{padding:45px 0 64px}.eyebrow{color:var(--lime);font-size:.76rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase}h1,h2,h3,p{margin:0}h1{font-size:clamp(2.7rem,7.5vw,5.75rem);line-height:1;letter-spacing:-.07em;margin:10px 0 18px}h2{font-size:1.46rem;line-height:1.2;margin-bottom:12px}h3{font-size:1.05rem}.lead{max-width:660px;color:var(--muted);font-size:1.12rem}.notice{border-left:3px solid var(--lime);padding:7px 14px;margin:24px 0;color:var(--muted);font-size:.9rem}.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:16px;align-items:start}.panel{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:clamp(15px,3vw,25px)}.controls{display:grid;gap:13px;margin-top:14px}.field{display:grid;gap:4px}.check{display:flex;align-items:baseline;gap:9px;font-size:.9rem}.check input{accent-color:var(--lime)}input,select,button{font:inherit}select,button{max-width:100%;min-height:44px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--text);padding:7px 10px}button{cursor:pointer}button.primary{background:var(--lime);border-color:var(--lime);color:#152014;font-weight:750}button:disabled{opacity:.55;cursor:default}:focus-visible{outline:2px solid var(--lime);outline-offset:3px}.sub{color:var(--muted);font-size:.88rem}.headrow{display:flex;gap:8px;justify-content:space-between;align-items:start;flex-wrap:wrap}.case-facts{margin:10px 0 0;color:var(--muted)}.status{padding:4px 8px;border:1px solid currentColor;border-radius:5px;font-size:.76rem;font-weight:700;display:inline-block}.stop{color:var(--red)}.missing,.review{color:var(--amber)}.ok{color:var(--lime)}.info{color:var(--blue)}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}.metric{padding:11px 12px;border:1px solid var(--line);border-radius:8px}.metric strong{display:block;font-size:clamp(1rem,2.5vw,1.44rem);line-height:1.3}.action{padding:12px 14px;border-left:3px solid currentColor;margin:12px 0;background:var(--bg)}.action p{color:var(--text);margin-top:5px}.section{margin-top:16px}.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:0 0 17px}.steps li{padding:9px 10px;background:var(--bg);border-radius:8px}.steps small{display:block;color:var(--lime)}details{border-top:1px solid var(--line);padding:11px 0}details p{margin:7px 0}summary{cursor:pointer}.evidence{padding:8px 10px;background:var(--bg);font-size:.89rem;border-radius:6px}.evidence code{font:inherit;color:var(--muted)}.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:.88rem}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}.rejected{color:var(--muted)}a{color:var(--lime)}.links{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px}.footer{margin-top:24px}.footer p+p{margin-top:8px}[hidden]{display:none!important}@media(max-width:740px){.grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}@media print{:root{color-scheme:light;--bg:white;--panel:white;--line:#ccc;--text:#111;--muted:#333;--red:#8b1100;--amber:#705000;--lime:#285300;--blue:#17476e}body{font-size:11pt}.inputs,header,button,.footer{display:none}.grid{display:block}main{padding:0}h1{font-size:35pt}}
+</style></head><body>
+<header><a href="./">Ленар Газизуллин ↗</a><span class="eyebrow">Лаборатория · недвижимость</span></header>
+<main>
+<p class="eyebrow">Интерактивная проверка перед авансом</p>
+<h1>Досье сделки</h1>
+<p class="lead">Сверьте объект и документы, разберите сигналы по сделке и получите диапазон цены с аналогами. В отчёте у каждого вывода есть источник и следующее действие.</p>
+<p class="notice">Демо на вымышленных объектах. Ответы источников и документы смоделированы. Четыре модуля выполняются в браузере по заданным правилам.</p>
+<div class="grid"><section class="panel inputs" aria-labelledby="inputs-heading">
+<h2 id="inputs-heading">Соберите входные данные</h2>
+<form id="inputs" class="controls">
+<label class="field">Учебная сделка<select id="scenario">
+<option value="standard">Обычная продажа квартиры</option>
+<option value="mortgage" selected>Ипотека и расхождение в площади</option>
+<option value="representative">Продажа по доверенности</option>
+</select></label>
+<label class="check"><input id="extract" type="checkbox" checked> Добавить учебную выписку ЕГРН</label>
+<label class="check" id="bank-row"><input id="bank" type="checkbox"> Добавить учебную схему погашения от банка</label>
+<label class="check"><input id="outage" type="checkbox"> Имитировать сбой Федресурса</label>
+<label class="check"><input id="few" type="checkbox"> Оставить только два подходящих аналога</label>
+<button type="submit" class="primary">Собрать досье →</button>
+</form>
+</section>
+<section class="panel" aria-labelledby="case-title"><div class="headrow"><div><p class="eyebrow">Карточка объекта</p><h2 id="case-title"></h2></div><span class="status info">Тестовые данные</span></div>
+<p id="facts" class="case-facts"></p><div id="summary" aria-live="polite"></div>
+<div id="export" class="links" hidden><button id="download" type="button">Скачать отчёт</button><button id="print" type="button">Печать / PDF</button></div>
+</section></div>
+<section id="checks-panel" class="panel section" hidden aria-labelledby="checks-title">
+<h2 id="checks-title">Как собрался вывод</h2>
+<ol class="steps"><li><small>01</small>Объект и документы</li><li><small>02</small>Стороны и полномочия</li><li><small>03</small>Аналоги и цена</li><li><small>04</small>Решение по маршруту</li></ol>
+<div id="checks"></div>
+</section>
+<section id="market-panel" class="panel section" hidden aria-labelledby="market-title"><h2 id="market-title">Почему такой диапазон</h2>
+<p class="sub">Сравниваем цены предложений за м² после фильтрации. Диапазон берём между 25-м и 75-м процентилями и умножаем на документально указанную в учебном кейсе площадь. Для демонстрации требуется не менее трёх подходящих аналогов.</p>
+<div class="scroll"><table><thead><tr><th scope="col">Аналог</th><th scope="col">Площадь</th><th scope="col">Цена предложения</th><th scope="col">₽/м²</th><th scope="col">Отбор</th></tr></thead><tbody id="comparables"></tbody></table></div>
+</section>
+<section class="panel section footer"><h2>Источники для рабочего пилота</h2><p class="sub">ЕГРН и документы сторон подтверждают факты об объекте. Федресурс и ФНП проверяют отдельные сигналы. Рыночный ориентир считается по сопоставимым данным с разрешённым доступом. Для сложных случаев формируется очередь профильного специалиста.</p>
+<div class="links"><a href="https://nspd.gov.ru/map">НСПД</a><a href="https://www.gosuslugi.ru/600359/1/form">Выписки ЕГРН</a><a href="https://fedresurs.ru/">Федресурс</a><a href="https://reestr-dover.ru/">ФНП</a><a href="https://public-api.cian.ru/docs/latest">Документация ЦИАН</a></div></section>
+</main>
+<script>
+const cases = {
+  standard: { title:'Квартира · обычная продажа', area:49.6, listing:49.6, ask:10800000, zone:'Ново-Савиновский район, Казань' },
+  mortgage: { title:'Квартира · ипотека', area:51.2, listing:53.4, ask:12000000, zone:'Ново-Савиновский район, Казань' },
+  representative: { title:'Квартира · представитель', area:52.8, listing:52.8, ask:11500000, zone:'Ново-Савиновский район, Казань' }
+};
+const listings = [
+  { name:'А-01', area:50, price:10800000 }, { name:'А-02', area:51.5, price:10900000 },
+  { name:'А-03', area:52, price:11700000 }, { name:'А-04', area:54, price:12100000 },
+  { name:'А-05', area:48, price:10700000 }, { name:'А-06', area:56, price:15100000, reason:'Другой класс дома' },
+  { name:'А-07', area:50, price:10800000, reason:'Дубликат А-01' }
+];
+const statusText = { ok:'Подтверждено в примере', stop:'Стоп-сигнал', missing:'Нет подтверждения', review:'Нужна сверка', info:'К сведению' };
+const money = new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0});
+const rub = value => money.format(value) + ' ₽';
+const metres = value => value.toLocaleString('ru-RU') + ' м²';
+const percent = (values, fraction) => {
+  const index = (values.length - 1) * fraction;
+  const lower = Math.floor(index);
+  const upper = Math.ceil(index);
+  return values[lower] + (values[upper] - values[lower]) * (index - lower);
+};
+function buildReport(id, options) {
+  const item = cases[id];
+  const checks = [];
+  const add = (agent, title, status, source, evidence, action) => checks.push({agent,title,status,source,evidence,action});
+  if (!options.extract) {
+    add('Объект','Право и обременения','missing','ЕГРН · документ от собственника','В учебном пакете отсутствует выписка.','Запросить актуальную выписку и сверить объект и право.');
+  } else {
+    add('Объект','Площадь по документу',item.area === item.listing ? 'ok' : 'review','ЕГРН · учебная выписка E-01',
+      'В выписке ' + metres(item.area) + ', в объявлении ' + metres(item.listing) + '.',
+      item.area === item.listing ? 'Использовать площадь из выписки при расчёте.' : 'Уточнить причину расхождения и согласовать площадь для договора.');
+    if (id === 'mortgage') {
+      add('Объект','Ипотека',options.bank ? 'review' : 'stop','ЕГРН E-01 · банк',
+        options.bank ? 'Ипотека зарегистрирована. Приложена учебная схема погашения B-01.' : 'Ипотека зарегистрирована. Схема погашения не приложена.',
+        options.bank ? 'Сверить порядок расчётов и снятия записи по схеме банка.' : 'Приостановить оформление аванса до согласования схемы с банком.');
+    } else {
+      add('Объект','Обременения','ok','ЕГРН · учебная выписка E-01','В предоставленном тестовом документе записи об обременениях отсутствуют.','Перепроверить актуальность документа к дате сделки.');
+    }
+  }
+  if (id === 'representative') {
+    add('Стороны','Доверенность отменена','stop','ФНП · учебный ответ N-01','Тестовый ответ реестра содержит отметку об отмене.','Проверить полномочия через собственника и профильного специалиста до аванса.');
+  } else {
+    add('Стороны','Представитель','info','Учебная анкета A-01','Сценарий предусматривает личное участие продавца.','Сверить личность и полномочия по допущенным документам.');
+  }
+  add('Стороны','Публикации о банкротстве',options.outage ? 'missing' : 'ok','ЕФРСБ · учебный ответ F-01',
+    options.outage ? 'Источник не ответил. Статус неизвестен.' : 'В учебной выборке по заданным реквизитам совпадений нет.',
+    options.outage ? 'Повторить запрос по допустимым реквизитам.' : 'Сохранить дату ответа и сверить идентификаторы участника.');
+  const comps = listings.map((row,index) => ({
+    ...row, perMetre:row.price / row.area,
+    reason:row.reason ?? (options.few && index > 1 ? 'Нет свежего подтверждения объявления' : '')
+  }));
+  const prices = comps.filter(row => !row.reason).map(row => row.perMetre).sort((a,b) => a-b);
+  const range = options.extract && prices.length >= 3 ? {
+    low:percent(prices,.25)*item.area, high:percent(prices,.75)*item.area, count:prices.length
+  } : null;
+  add('Цена','Рыночный ориентир',range ? 'info' : 'missing','Учебная выборка объявлений M-01',
+    range ? prices.length + ' аналогов. Цены предложения, до переговоров.' : 'Нужна площадь из документа и минимум три сопоставимых предложения.',
+    range ? 'Обсудить цену и различия с аналогами.' : 'Добрать документ или подходящие аналоги.');
+  const severity = ['stop','missing','review'];
+  const attention = severity.flatMap(status => checks.filter(check => check.status === status));
+  const outcome = attention[0]?.status ?? 'ok';
+  return { id, item, checks, comps, range, attention, outcome };
+}
+const byId = id => document.getElementById(id);
+const titles = { stop:'Приостановить подготовку аванса', missing:'Сначала собрать недостающие сведения', review:'Передать расхождения на сверку', ok:'Передать досье на финальную сверку' };
+let currentReport = null;
+function showCase() {
+  const id = byId('scenario').value;
+  const item = cases[id];
+  byId('bank-row').hidden = id !== 'mortgage';
+  byId('case-title').textContent = item.title;
+  byId('facts').textContent = item.zone + ' · ' + metres(item.listing) + ' в объявлении · ' + rub(item.ask);
+  byId('summary').textContent = 'Запустите проверку, чтобы увидеть решение по авансу, источники и расчёт цены.';
+  for (const section of ['export','checks-panel','market-panel']) byId(section).hidden = true;
+  currentReport = null;
+}
+function render(report) {
+  const {outcome,attention,range,checks,comps,item} = report;
+  const rangeText = range ? rub(Math.round(range.low/10000)*10000) + ' – ' + rub(Math.round(range.high/10000)*10000) : 'Недостаточно данных';
+  const priceNote = range && item.ask > range.high ? 'Цена объявления выше верхней границы примера.' : 'Метод и состав выборки приведены ниже.';
+  byId('summary').innerHTML = '<div class="metrics"><div class="metric"><span class="sub">Ориентир по предложениям</span><strong>' + rangeText + '</strong><span class="sub">' + (range ? priceNote : 'Нужны площадь и подходящие аналоги.') + '</span></div><div class="metric"><span class="sub">На контроле</span><strong>' + attention.length + ' из ' + checks.length + '</strong><span class="sub">Проверки с открытыми вопросами</span></div></div><div class="action ' + outcome + '"><h3>' + titles[outcome] + '</h3><p>' + (attention[0]?.action ?? 'Сверить актуальность сведений и документы перед принятием решения.') + '</p></div>';
+  byId('checks').innerHTML = checks.map(check => '<details' + (check.status === 'stop' ? ' open' : '') + '><summary>' + check.title + ' · <span class="status ' + check.status + '">' + statusText[check.status] + '</span></summary><p class="sub">' + check.agent + ' · ' + check.source + '</p><p class="evidence"><code>' + check.evidence + '</code></p><p>' + check.action + '</p></details>').join('');
+  byId('comparables').innerHTML = comps.map(row => '<tr' + (row.reason ? ' class="rejected"' : '') + '><td>' + row.name + '</td><td>' + metres(row.area) + '</td><td>' + rub(row.price) + '</td><td>' + rub(row.perMetre) + '</td><td>' + (row.reason || 'Включён') + '</td></tr>').join('');
+  for (const section of ['export','checks-panel','market-panel']) byId(section).hidden = false;
+}
+byId('inputs').addEventListener('change', showCase);
+byId('inputs').addEventListener('submit', event => {
+  event.preventDefault();
+  currentReport = buildReport(byId('scenario').value, Object.fromEntries(['extract','bank','outage','few'].map(key => [key,byId(key).checked])));
+  render(currentReport);
+});
+byId('download').addEventListener('click', () => {
+  if (!currentReport) return;
+  const body = JSON.stringify({ demo:true, generatedAt:new Date().toISOString(), ...currentReport },null,2);
+  const href = URL.createObjectURL(new Blob([body],{type:'application/json'}));
+  const link = document.createElement('a');
+  link.href = href;
+  link.download = 'uchebnoe-dosye-sdelki.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(href),1000);
+});
+byId('print').addEventListener('click', () => window.print());
+showCase();
+</script></body></html>
