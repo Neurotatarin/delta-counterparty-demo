@@ -128,7 +128,10 @@
     $('brief-task').setCustomValidity('');
     activeBrief = `Бриф для Ленара\n\nЧто нужно: ${$('brief-type').value}.\nГде идёт работа: ${$('brief-source').value}.\n\nЗадача и ожидаемый результат:\n${task}\n\nКонтроль действий: ${$('brief-review').checked?'нужно подтверждение человека':'границы автономности обсудим отдельно'}.\n\nНа первом обсуждении уточним примеры данных, интеграции, ограничения, сроки и бюджет.`;
     if (campaignTags.length) activeBrief += `\n\nМетки источника: ${campaignTags.join(', ')}.`;
-    $('brief-preview').textContent = activeBrief;$('brief-result').hidden=false;$('copy-status').textContent='';
+    $('brief-preview').textContent = activeBrief;
+    $('brief-result').hidden = false;
+    $('copy-status').textContent = '';
+    $('brief-result-title').focus();
   });
   $('brief-task').addEventListener('input', () => $('brief-task').setCustomValidity(''));
   ['brief-type','brief-source','brief-task','brief-review'].forEach(id => $(id).addEventListener('input', () => {activeBrief='';$('brief-result').hidden=true;}));
