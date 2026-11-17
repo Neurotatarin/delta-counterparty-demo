@@ -139,6 +139,20 @@
     try {await navigator.clipboard.writeText(activeBrief);$('copy-status').textContent='Скопировано. Вставьте бриф в сообщение Ленару.';}
     catch {$('copy-status').textContent='Браузер не разрешил копирование. Выделите текст брифа вручную или скачайте файл.';}
   });
+  const openBrief = document.querySelector('.brief-result-actions a[href="https://t.me/lenar_ai"]');
+  if (openBrief) {
+    openBrief.textContent = 'Скопировать и открыть Telegram ↗';
+    openBrief.addEventListener('click', event => {
+      if (!activeBrief) return;
+      event.preventDefault();
+      const telegramWindow = window.open(openBrief.href, '_blank');
+      if (telegramWindow) telegramWindow.opener = null;
+      navigator.clipboard.writeText(activeBrief)
+        .then(() => {$('copy-status').textContent='Бриф скопирован. Вставьте его в открывшийся чат.';})
+        .catch(() => {$('copy-status').textContent='Telegram открыт. Браузер не разрешил копирование — выделите текст брифа вручную.';})
+        .finally(() => {if (!telegramWindow) window.location.href=openBrief.href;});
+    });
+  }
   $('download-brief').addEventListener('click', () => {
     const url = URL.createObjectURL(new Blob([activeBrief],{type:'text/plain;charset=utf-8'}));
     const link = document.createElement('a');link.href=url;link.download='brief-dlya-lenara.txt';link.click();setTimeout(() => URL.revokeObjectURL(url),1000);
